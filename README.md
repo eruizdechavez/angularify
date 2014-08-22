@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/erickrdch/angularify.png?label=ready&title=Ready)](https://waffle.io/erickrdch/angularify)
 angularify
 ==========
 
