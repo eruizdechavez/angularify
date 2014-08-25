@@ -90,12 +90,28 @@ module.exports = function (grunt) {
       }
     },
     less: {
-      styles: {
+      development: {
         options: {
           paths: [
             '<%= meta.bower %>',
             '<%= meta.less %>'
           ]
+        },
+        files: {
+          '<%= meta.css %>/styles.css': '<%= meta.less %>/styles.less'
+        }
+      },
+      dist: {
+        options: {
+          paths: [
+            '<%= meta.bower %>',
+            '<%= meta.less %>'
+          ],
+          compress: false,
+          optimization: 2,
+          sourceMap: true,
+          sourceMapFilename: '<%= meta.css %>/styles.css.map',
+          sourceMapBasepath: '<%= meta.css %>/'
         },
         files: {
           '<%= meta.css %>/styles.css': '<%= meta.less %>/styles.less'
@@ -121,7 +137,7 @@ module.exports = function (grunt) {
       },
       less: {
         files: ['<%= meta.less %>/**/*.less'],
-        tasks: ['less:styles'],
+        tasks: ['less:development'],
         options: {
           livereload: true
         }
@@ -149,7 +165,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', ['concurrent:development']);
 
-  grunt.registerTask('development', ['clean:build', 'concat:libs', 'browserify', 'less', 'copy:fonts']);
-  grunt.registerTask('build', ['clean:build', 'concat:libsMin', 'browserify', 'uglify', 'less', 'copy:fonts']);
+  grunt.registerTask('development', ['clean:build', 'concat:libs', 'browserify', 'less:development', 'copy:fonts']);
+  grunt.registerTask('build', ['clean:build', 'concat:libsMin', 'browserify', 'uglify', 'less:dist', 'copy:fonts']);
   grunt.registerTask('dist', ['build', 'copy:dist']);
 };
