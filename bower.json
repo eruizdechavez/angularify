@@ -3,7 +3,8 @@
   "main": "index.js",
   "version": "1.0.0",
   "authors": [
-    "Erick Ruiz de Chavez <erick@erch.co>"
+    "Erick Ruiz de Chavez <erick@erch.co>",
+    "Jorge Luis Parga <el.parga@gmail.com>",
   ],
   "description": "A web application scaffold based on AngularJS and some common libraries like Express and Browserify.",
   "license": "MIT",
