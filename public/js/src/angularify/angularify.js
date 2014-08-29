@@ -12,6 +12,20 @@ angular
   .directive('navBar', function () {
     return {
       restrict: 'E',
-      template: require('./nav-bar.html')
+      template: require('./nav-bar.html'),
+      controller: ['$scope',
+        function ($scope) {
+          $scope.isCollapsed = true;
+          $scope.toggleCollapsed = function () {
+            $scope.isCollapsed = !$scope.isCollapsed;
+          };
+
+          $scope.collapse = function() {
+            if (!$scope.isCollapsed) {
+              $scope.isCollapsed = true;
+            }
+          };
+        }
+      ]
     };
   });
