@@ -2,6 +2,7 @@
 
 module.exports = function (grunt) {
   grunt.initConfig({
+    // Metadata. Use this to tweak your paths if you want something different.
     meta: {
       bower: 'public/bower_components',
       less: 'public/less',
@@ -14,6 +15,7 @@ module.exports = function (grunt) {
       config: 'config',
       modules: 'modules'
     },
+    // Browserify. One of Angularify corner stones.
     browserify: {
       index: {
         files: {
@@ -21,11 +23,18 @@ module.exports = function (grunt) {
         }
       }
     },
+    // Some clean up tasks.
+    // clean:build - Remove build files.
+    // clean:dist - Remove build and dist files.
+    // clean:all - Clean all generated and downloaded files. if you run this
+    //           you will need to run again npm install and bower install.
     clean: {
       build: ['<%= meta.jsDist %>', '<%= meta.css %>', '<%= meta.fonts %>'],
       dist: ['<%= clean.build %>', '<%= meta.dist %>'],
       all: ['<%= clean.dist %>', 'node_modules', '<%= meta.bower %>']
     },
+    // Concatenate task.
+    // This one is used to concatenate all our external (bower) dependencies.
     concat: {
       options: {
         separator: ';',
@@ -56,6 +65,8 @@ module.exports = function (grunt) {
         }
       }
     },
+    // Concurrent tasks.
+    // This task is used to run our build, watcher and local server concurrently.
     concurrent: {
       development: {
         tasks: ['development', 'watch', 'nodemon'],
@@ -64,6 +75,8 @@ module.exports = function (grunt) {
         }
       }
     },
+    // Copy task.
+    // Copy static files where and when required.
     copy: {
       fonts: {
         expand: true,
@@ -78,6 +91,8 @@ module.exports = function (grunt) {
         dest: '<%= meta.dist %>/'
       }
     },
+    // JSHint.
+    // Make sure all the code is JSHinted always.
     jshint: {
       options: {
         jshintrc: true
@@ -89,6 +104,8 @@ module.exports = function (grunt) {
         src: '<%= meta.jsSrc %>/**/*.js'
       }
     },
+    // LESS
+    // Compile LESS files when required.
     less: {
       development: {
         options: {
@@ -118,11 +135,15 @@ module.exports = function (grunt) {
         }
       }
     },
+    // NodeMon task.
+    // Run express and reload it when needed.
     nodemon: {
       development: {
         script: 'index.js'
       }
     },
+    // Uglify task.
+    // Minify JS code for production environment.
     uglify: {
       index: {
         files: {
@@ -130,6 +151,8 @@ module.exports = function (grunt) {
         }
       }
     },
+    // Watch tasks.
+    // Watch for changes and trigger tasks based on them.
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -152,6 +175,7 @@ module.exports = function (grunt) {
     }
   });
 
+  // Load Grunt tasks.
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -163,8 +187,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-nodemon');
 
+  // Local tasks.
   grunt.registerTask('default', ['concurrent:development']);
-
   grunt.registerTask('development', ['clean:build', 'concat:libs', 'browserify', 'less:development', 'copy:fonts']);
   grunt.registerTask('build', ['clean:build', 'concat:libsMin', 'browserify', 'uglify', 'less:dist', 'copy:fonts']);
   grunt.registerTask('dist', ['build', 'copy:dist']);

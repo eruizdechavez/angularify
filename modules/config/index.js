@@ -1,3 +1,6 @@
+// This is a simple configuration module. This file should not require to be
+// edited manually at all.
+
 'use strict';
 
 var fs = require('fs'),

@@ -1,3 +1,5 @@
+// Basic Express server.
+
 'use strict';
 
 var app = require('./app');
