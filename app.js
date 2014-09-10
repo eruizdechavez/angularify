@@ -6,7 +6,7 @@ var express = require('express'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
   app = express(),
-  config = require('./modules/config');
+  config = require('indecent');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
