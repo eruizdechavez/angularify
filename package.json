@@ -24,6 +24,7 @@
     "domready": "^1.0.6",
     "ejs": "~1.0.0",
     "express": "~4.8.5",
+    "indecent": "^1.0.0",
     "js-yaml": "^3.1.0",
     "lodash": "^2.4.1",
     "static-favicon": "~1.0.0"
