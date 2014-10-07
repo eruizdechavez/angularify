@@ -34,7 +34,6 @@ To leave the project clean of all libraries and generated files (delete node_mod
 
 TODO
 ----
-[![v1.1.0][milestone-badge]][milestone]
 [![Stories in Ready][ready-badge]][waffle]
 [![Stories in In Progress][in-progress-badge]][waffle]
 
@@ -43,7 +42,6 @@ We manage the roadmap and list of `TODO`s using [GitHub issues][github-issues] a
 
 <!-- Links below this line please -->
 
-[demo]: http://angularify.erickruizdechavez.com
 [localhost]: http://localhost:3000
 [github-issues]: https://github.com/erickrdch/angularify/issues
 [waffle.io]: https://waffle.io
@@ -55,5 +53,3 @@ We manage the roadmap and list of `TODO`s using [GitHub issues][github-issues] a
 
 [david-badge]: https://david-dm.org/erickrdch/angularify.svg
 [david-link]: https://david-dm.org/erickrdch/angularify
-
-[milestone-badge]: http://miles.erickruizdechavez.com/badges/erickrdch/angularify/1
