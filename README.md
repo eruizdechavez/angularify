@@ -5,8 +5,6 @@ angularify
 
 A web application scaffold based on AngularJS and some common libraries like Express and Browserify.
 
-You can see a live example at [angularify.erickruizdechavez.com][demo].
-
 How to use it
 -------------
 
